@@ -1,4 +1,4 @@
-using BrainlessPet.Actions;
+using BrainlessPet.Scriptables;
 using System.Collections;
 using BrainlessPet.Tools;
 using UnityEngine;
@@ -9,8 +9,8 @@ namespace BrainlessPet.Characters
     {
         [SerializeField] private Rigidbody2D rigidbody2DRef;
         [SerializeField] private MovementController movementController;
-        [SerializeField] private ScriptableActions onDeath;
-        [SerializeField] private ScriptableActions onEnterGate;
+        [SerializeField] private VoidEventChannelSO onDeath;
+        [SerializeField] private VoidEventChannelSO onEnterGate;
         [SerializeField] private float yLimitToDeath;
         private IRaySelector selector;
         private Vector2 direction = Vector2.right;
@@ -24,20 +24,10 @@ namespace BrainlessPet.Characters
         {
             if (transform.position.y < yLimitToDeath)
             {
-                onDeath.Raise();
+                onDeath.RaiseEvent();
             }
-            
             CheckCollision();
             movementController.Move(direction);
-
-           /* if (Input.GetKeyDown(KeyCode.W))
-            {
-                movementController.Jump();
-            }
-            if (Input.GetKeyUp(KeyCode.W))
-            {
-                movementController.StartFall();
-            }*/
         }
 
         private void CheckCollision()
@@ -53,7 +43,7 @@ namespace BrainlessPet.Characters
                 }
                 if (otherObject.CompareTag("Gate"))
                 {
-                    onEnterGate.Raise();
+                    onEnterGate.RaiseEvent();
                 }
             }
         }
