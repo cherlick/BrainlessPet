@@ -1,33 +1,42 @@
 using System.Collections;
 using UnityEngine;
-using BrainlessPet.Actions;
 
 namespace BrainlessPet.Characters.Pets
 {
-    public class JumpCommand : MonoBehaviour, IActionListener<float>
+    public class JumpCommand : PetCommands
     {
         [SerializeField] private Rigidbody2D rb2D;
-        [SerializeField] private float jumpForce;
-        [SerializeField] protected KeyCode inputKey = KeyCode.R;
-        [SerializeField] protected int limitUsage;
         private bool didJump;
 
-        protected void Update()
+        protected override void Update()
         {
-            if (Input.GetKeyUp(inputKey) && limitUsage > 0)
+            if (Input.GetKeyDown(inputKey) && limitUsage.Value > 0)
             {
                 Jump();
-                limitUsage-=1;
             }
-            if (Input.GetKeyDown(inputKey) && didJump)
+            if (Input.GetKeyUp(inputKey) && didJump)
             {
                 StartFall();
             }
         }
 
+        protected override void GiveCommand()
+        {
+            if (didJump)
+            {
+                StartFall();
+            }
+            else if (limitUsage.Value > 0 && !didJump)
+            {
+                base.GiveCommand();
+                Debug.Log("Jump");
+                Jump();
+            }
+        }
+
         public void Jump()
         {
-            Vector2 targetVelocity = new Vector2(rb2D.velocity.x, rb2D.velocity.y + jumpForce);
+            Vector2 targetVelocity = new Vector2(rb2D.velocity.x, rb2D.velocity.y + commandType.modifier.Value);
             rb2D.AddForce(targetVelocity, ForceMode2D.Impulse);
             didJump = true;
         }
@@ -38,8 +47,6 @@ namespace BrainlessPet.Characters.Pets
             rb2D.AddForce(targetVelocity, ForceMode2D.Impulse);
             didJump = false;
         }
-
-        public void ActionRaised(float usage) => limitUsage = (int)usage;
     }
 }
 

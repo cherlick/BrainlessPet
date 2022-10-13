@@ -1,17 +1,19 @@
 using System;
-using BrainlessPet.Actions;
+using BrainlessPet.Scriptables;
+using UnityEngine;
 
 namespace BrainlessPet.Characters.Pets
 {    
     [Serializable]
     public class PetCommandsData
     {
-        public PetCommandsEnum command;
-        public int usageLimit;
-        public ScriptableActionsFloat commandToSetup;
-        public void SetupDataCommands()
+        public PetCommandType commandType;
+        public FloatReference usageLimits;
+
+        public void SetupCommand()
         {
-            commandToSetup.Raise(usageLimit);
+            Debug.Log($"Setup {commandType.commandSetupChannel}");
+            commandType.commandSetupChannel.RaiseEvent(usageLimits.Value);
         }
     }
 }

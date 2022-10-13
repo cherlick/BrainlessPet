@@ -1,56 +1,65 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using BrainlessPet.ScenesChangeSystem;
+using BrainlessPet.Scriptables;
 
 namespace BrainlessPet.LevelsSystem
 {
     public class LevelManager : MonoBehaviour
     {
-        [SerializeField] List<LevelData> allLevels = new List<LevelData>();
-        private readonly int numberOfPossibleActiveScenes = 2;
-
-        private SceneNamesEnum currentLevel;
-        private SceneNamesEnum nextLevel = SceneNamesEnum.Level_1;
-        private Dictionary<SceneNamesEnum, LevelData> levels = new Dictionary<SceneNamesEnum, LevelData>();
-
-        private void Awake() 
-        {
-            allLevels.ForEach( data => levels.Add(data.sceneName, data));
-        }
+        [SerializeField] private VoidEventChannelSO onSceneReadyChannel = default;
+        [SerializeField] private LoadEventChannelSO onloadLevelRequestChannel = default;
+        [SerializeField] private VoidEventChannelSO onNextLevelChannel = default;
+        [SerializeField] private VoidEventChannelSO onDeathChannel = default;
+        [Tooltip("Initialize it with Core LevelSO")]
+        [SerializeField] private LevelSO currentLevel = default;
 
         private void Start() 
         {
-            ChangeLevel();
-            SetupLevel();
-        }
-
-        private void SetupLevel()
-        {
-            levels[currentLevel].SetupCommandsUsage();
-        }
-        private void ChangeLevel()
-        {
-            //Debug.Log($"Is {nextLevel} a valid scene? {ScenesManager.IsValidScene(nextLevel.ToString())}");
-
-            if (!ScenesManager.IsValidScene(nextLevel.ToString())) return;
-
-            if (ScenesManager.GetNumberOfActiveScenes() >= numberOfPossibleActiveScenes)
+            if (currentLevel == null)
             {
-                ScenesManager.UnloadScene(currentLevel);
+                Debug.LogWarning($"currentLevel variable is empty {currentLevel}");
             }
-            
-            ScenesManager.LoadScene(nextLevel, true);
 
-            currentLevel = nextLevel;
-            if (IsSceneALevel(currentLevel))
+            NextLevel();
+        }
+
+        private void OnEnable() 
+        {
+            if (onSceneReadyChannel != null)
             {
-                SetupLevel();
+                onSceneReadyChannel.OnEventRaised += SetupLevelData;
+            }
+            if (onNextLevelChannel != null)
+            {
+                onNextLevelChannel.OnEventRaised += NextLevel;
+            }
+            if (onDeathChannel != null)
+            {
+                onDeathChannel.OnEventRaised += RestartLevel;
             }
         }
-        private bool IsSceneALevel(SceneNamesEnum nextSceneName) => levels.ContainsKey(nextSceneName);
+        private void OnDisable() 
+        {
+            onSceneReadyChannel!.OnEventRaised -= SetupLevelData;
+            onNextLevelChannel!.OnEventRaised -= NextLevel;
+            onDeathChannel!.OnEventRaised -= RestartLevel;
+        }
 
+        private void SetupLevelData()
+        {
+            Debug.Log($"Current level {currentLevel}");
+            currentLevel.levelData.SetupLevel();
+        }
+
+        private void NextLevel()
+        {
+            onloadLevelRequestChannel?.RaiseEvent(currentLevel.levelData.nextLevel,false);
+            currentLevel = currentLevel.levelData.nextLevel;    
+        }
+        private void RestartLevel()
+        {
+            onloadLevelRequestChannel?.RaiseEvent(currentLevel,false);
+        }
     }
 }
 

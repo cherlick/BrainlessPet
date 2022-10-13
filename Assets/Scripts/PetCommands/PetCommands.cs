@@ -1,46 +1,63 @@
 using System.Collections;
 using UnityEngine;
-using BrainlessPet.Actions;
+using BrainlessPet.Scriptables;
 
 namespace BrainlessPet.Characters.Pets
 {
-    public abstract class PetCommands : MonoBehaviour, IActionListener<float>
+    public abstract class PetCommands : MonoBehaviour
     {
-        [SerializeField, Range(0f, 10f)] protected float duration;
-        [SerializeField, Range(0f, 1.5f)] protected float modifier = 0.1f;
-        [SerializeField] protected KeyCode inputKey = KeyCode.R;
-        [SerializeField] protected int limitUsage;
-        protected float currentValue;
+        [Header("Command settings")]
+        [SerializeField] protected PetCommandType commandType;
+        [SerializeField] protected FloatReference variableToModify;
+        [SerializeField] protected KeyCode inputKey = default;
+        [SerializeField] protected FloatReference limitUsage;
+        
+        protected float originalValue;
 
         private WaitForSeconds waitingTime;
-        protected ICommandable iComandable;
 
         protected virtual private void Start() 
         {
-            waitingTime = new WaitForSeconds(duration);
-            iComandable = GetComponent<ICommandable>();
+            waitingTime = new WaitForSeconds(commandType.duration.Value);
+            originalValue = variableToModify.Value;
         }
 
         protected virtual void Update()
         {
-            if (Input.GetKeyUp(inputKey) && limitUsage > 0)
+            if (Input.GetKeyUp(inputKey) && limitUsage.Value > 0)
             {
                 GiveCommand();
-                limitUsage-=1;
             }
         }
 
-        protected abstract void GiveCommand();
+        private void OnEnable() 
+        {
+            commandType.commandSetupChannel.OnEventRaised += UpdateUsage;
+            commandType.commandTriggerChannel.OnEventRaised += GiveCommand;
+        }
+        private void OnDisable() 
+        {
+            commandType.commandSetupChannel.OnEventRaised -= UpdateUsage;
+            commandType.commandTriggerChannel.OnEventRaised -= GiveCommand;
+            if (variableToModify.Variable != null)
+            {
+                variableToModify.Variable.Value = originalValue;
+            }
+        }
+
+        protected virtual void GiveCommand()
+        {
+            limitUsage.Variable.Value--;
+        }
 
         protected virtual IEnumerator ApplyModifier(float modifiedValue)
         {
-            iComandable.CurrentModifierValue = modifiedValue;
+            variableToModify.Variable.Value = modifiedValue;
             yield return waitingTime;
-            iComandable.ResetCommand();
+            variableToModify.Variable.Value = originalValue;
         }
 
-        public void ActionRaised(float usage) => limitUsage = (int)usage;
-
+        public void UpdateUsage(float usage) => limitUsage.Variable.Value = usage;
     }
 }
 
