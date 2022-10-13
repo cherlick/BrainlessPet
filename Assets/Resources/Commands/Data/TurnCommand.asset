@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4765ceb065e038a4b90866f686052cdc, type: 3}
+  m_Name: TurnCommand
+  m_EditorClassIdentifier: 
+  commandSetupChannel: {fileID: 11400000, guid: 193d3c38301495c48bb240217dde8eca, type: 2}
+  commandTriggerChannel: {fileID: 11400000, guid: e651d04c7cf175e43a99d137dcbb545e, type: 2}
+  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  modifier:
+    UseConstante: 1
+    ConstanteValue: -1
+    Variable: {fileID: 0}
+  duration:
+    UseConstante: 1
+    ConstanteValue: 0
+    Variable: {fileID: 0}
+  usageVariableReference: {fileID: 11400000, guid: 8ee4feb4ffd02104da639382910b1fb3, type: 2}

@@ -129,7 +129,6 @@ GameObject:
   - component: {fileID: 2340465754999519110}
   - component: {fileID: 1962758752965318944}
   - component: {fileID: 472669582612177832}
-  - component: {fileID: 2340465754999519111}
   - component: {fileID: 2340465754999519131}
   m_Layer: 3
   m_Name: Pet
@@ -267,8 +266,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody2DRef: {fileID: 2340465754999519133}
   movementController: {fileID: 2340465754999519130}
-  onDeath: {fileID: 11400000, guid: 1e1ba33967aa50d4b878439734ded7a5, type: 2}
-  onEnterGate: {fileID: 11400000, guid: 19391647fd2cb8a47be3169d6728a073, type: 2}
+  onDeath: {fileID: 11400000, guid: 8ef3afce0f5d3544cbfb96b102f05e35, type: 2}
+  onEnterGate: {fileID: 11400000, guid: 134f9ee96440c424389bd2143a37b4c4, type: 2}
   yLimitToDeath: -10
 --- !u!114 &2340465754999519130
 MonoBehaviour:
@@ -282,8 +281,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff4367f2e2919c040bf5727960fd9d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 10
+  moveSpeed:
+    UseConstante: 0
+    ConstanteValue: 0
+    Variable: {fileID: 11400000, guid: 86d6ec95e15efbe469b4d7881651cef1, type: 2}
 --- !u!114 &2340465754999519128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,13 +294,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 2340465754999519120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c7498ad793a7fb46bfad727e06c9e14, type: 3}
+  m_Script: {fileID: 11500000, guid: f9d02f856c8abaf42ac91cbbe8a74ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
-  modifier: 0.8
-  inputKey: 101
-  limitUsage: 0
+  commandType: {fileID: 11400000, guid: 7c65041e6dc7c7546ae198062db48afb, type: 2}
+  variableToModify:
+    UseConstante: 0
+    ConstanteValue: 0
+    Variable: {fileID: 11400000, guid: 86d6ec95e15efbe469b4d7881651cef1, type: 2}
+  inputKey: 113
+  limitUsage:
+    UseConstante: 0
+    ConstanteValue: 0
+    Variable: {fileID: 11400000, guid: b6063b3c5e7b9c149aa25a7a783139d4, type: 2}
 --- !u!114 &2340465754999519129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,13 +316,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 2340465754999519120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c7a150dbf03b36409b6f2da962a927e, type: 3}
+  m_Script: {fileID: 11500000, guid: f9d02f856c8abaf42ac91cbbe8a74ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
-  modifier: 0.6
-  inputKey: 114
-  limitUsage: 0
+  commandType: {fileID: 11400000, guid: 1d58452235c9d814ab01dd7206477a2c, type: 2}
+  variableToModify:
+    UseConstante: 0
+    ConstanteValue: 0
+    Variable: {fileID: 11400000, guid: 86d6ec95e15efbe469b4d7881651cef1, type: 2}
+  inputKey: 101
+  limitUsage:
+    UseConstante: 0
+    ConstanteValue: 0
+    Variable: {fileID: 11400000, guid: 33566cfa58b534240bbd10bdea70eb8d, type: 2}
 --- !u!114 &2340465754999519110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,13 +338,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 2340465754999519120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4923b8ebb39ae94b9ed0e5bf593ae3c, type: 3}
+  m_Script: {fileID: 11500000, guid: f9d02f856c8abaf42ac91cbbe8a74ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.5
-  modifier: 1
-  inputKey: 113
-  limitUsage: 0
+  commandType: {fileID: 11400000, guid: 36344d4df5731ce40b5dd9f4926b4e3f, type: 2}
+  variableToModify:
+    UseConstante: 0
+    ConstanteValue: 0
+    Variable: {fileID: 11400000, guid: 86d6ec95e15efbe469b4d7881651cef1, type: 2}
+  inputKey: 114
+  limitUsage:
+    UseConstante: 0
+    ConstanteValue: 0
+    Variable: {fileID: 11400000, guid: 7e6d0f596949bf44eba6f5bd556accc3, type: 2}
 --- !u!114 &1962758752965318944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,10 +363,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722dfa25ee543194eb55578193243837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb2D: {fileID: 2340465754999519133}
-  jumpForce: 10
+  commandType: {fileID: 11400000, guid: 4af2293c788e07347a685b091bb5b06f, type: 2}
+  variableToModify:
+    UseConstante: 1
+    ConstanteValue: 0
+    Variable: {fileID: 0}
   inputKey: 119
-  limitUsage: 0
+  limitUsage:
+    UseConstante: 0
+    ConstanteValue: 0
+    Variable: {fileID: 11400000, guid: 7f5ffeee0c437214b87568c34a763fda, type: 2}
+  rb2D: {fileID: 2340465754999519133}
 --- !u!114 &472669582612177832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,30 +386,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f979371fb558594f8c1d77f47552869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  commandType: {fileID: 11400000, guid: 5973c7aa0e8775e4fb605640ce5e72eb, type: 2}
+  variableToModify:
+    UseConstante: 1
+    ConstanteValue: 0
+    Variable: {fileID: 0}
   inputKey: 116
-  limitUsage: 0
---- !u!114 &2340465754999519111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2340465754999519120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a3c9f9ed15e83844863871c7905a5ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listnerToRegister:
-  - actionToRegister: {fileID: 11400000, guid: 5a4087fdf29009447a7ccadb1745b666, type: 2}
-    isActionWithParameter: 1
-    scriptListener: {fileID: 2340465754999519128}
-  - actionToRegister: {fileID: 11400000, guid: 0f691018071847340a2d33a7dcd12efa, type: 2}
-    isActionWithParameter: 1
-    scriptListener: {fileID: 2340465754999519129}
-  - actionToRegister: {fileID: 11400000, guid: e684cd8e13592284bb06be9b3c2a6100, type: 2}
-    isActionWithParameter: 1
-    scriptListener: {fileID: 2340465754999519110}
+  limitUsage:
+    UseConstante: 0
+    ConstanteValue: 0
+    Variable: {fileID: 11400000, guid: 8ee4feb4ffd02104da639382910b1fb3, type: 2}
 --- !u!114 &2340465754999519131
 MonoBehaviour:
   m_ObjectHideFlags: 0

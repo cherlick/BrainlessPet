@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4765ceb065e038a4b90866f686052cdc, type: 3}
+  m_Name: StopCommand
+  m_EditorClassIdentifier: 
+  commandSetupChannel: {fileID: 11400000, guid: ac107c27096eb7b43ae63fd0d9db9074, type: 2}
+  commandTriggerChannel: {fileID: 11400000, guid: 4b515f6f57f60164ebc5b78c47be726a, type: 2}
+  icon: {fileID: 7482667652216324306, guid: 66975f9353025364e983a73afb35d5cf, type: 3}
+  modifier:
+    UseConstante: 1
+    ConstanteValue: 1
+    Variable: {fileID: 0}
+  duration:
+    UseConstante: 1
+    ConstanteValue: 1
+    Variable: {fileID: 0}
+  usageVariableReference: {fileID: 11400000, guid: 7e6d0f596949bf44eba6f5bd556accc3, type: 2}
