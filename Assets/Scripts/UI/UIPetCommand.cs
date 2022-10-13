@@ -48,7 +48,6 @@ namespace BrainlessPet.UI
             }
 
             currentUsage = usageReference;
-            
         }
 
         private IEnumerator UpdateDelay()
@@ -57,9 +56,8 @@ namespace BrainlessPet.UI
             UpdateUsage();
         }
 
-        public void UpdateUsage(float usage) {uiUsage.text = usage.ToString(); Debug.Log("Update usage");} 
-
-        public void UpdateUsage() { uiUsage.text = currentUsage.Value.ToString();    Debug.Log("Update usageref");  }
+        public void UpdateUsage(float usage) => uiUsage.text = usage.ToString();
+        public void UpdateUsage() => uiUsage.text = currentUsage.Value.ToString();
         public void UpdateUsageWithDelay() => StartCoroutine("UpdateDelay");
     }
 }

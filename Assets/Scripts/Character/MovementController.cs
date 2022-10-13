@@ -1,5 +1,4 @@
 using UnityEngine;
-using BrainlessPet.Characters.Pets;
 using BrainlessPet.Scriptables;
 
 namespace BrainlessPet.Characters

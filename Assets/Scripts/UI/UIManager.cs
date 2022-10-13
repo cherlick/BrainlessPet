@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BrainlessPet.Scriptables;
 using TMPro;
-using BrainlessPet.Characters.Pets;
 
 namespace BrainlessPet.Core.UI
 {
@@ -36,7 +33,6 @@ namespace BrainlessPet.Core.UI
             {
                 OnPauseMenu.OnEventRaised -= OpenCloseMenuPanel;
             }
-            
         }
         
         private void OpenCloseMenuPanel()
@@ -67,9 +63,6 @@ namespace BrainlessPet.Core.UI
                 menuPanel!.SetActive(false);
             }
         }
-
-        
-
     }
 }
 

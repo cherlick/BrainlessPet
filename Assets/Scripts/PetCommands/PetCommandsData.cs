@@ -10,10 +10,6 @@ namespace BrainlessPet.Characters.Pets
         public PetCommandType commandType;
         public FloatReference usageLimits;
 
-        public void SetupCommand()
-        {
-            Debug.Log($"Setup {commandType.commandSetupChannel}");
-            commandType.commandSetupChannel.RaiseEvent(usageLimits.Value);
-        }
+        public void SetupCommand() => commandType.commandSetupChannel.RaiseEvent(usageLimits.Value);
     }
 }

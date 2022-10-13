@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using BrainlessPet.Scriptables;
 
@@ -45,11 +44,7 @@ namespace BrainlessPet.LevelsSystem
             onDeathChannel!.OnEventRaised -= RestartLevel;
         }
 
-        private void SetupLevelData()
-        {
-            Debug.Log($"Current level {currentLevel}");
-            currentLevel.levelData.SetupLevel();
-        }
+        private void SetupLevelData() =>currentLevel.levelData.SetupLevel();
 
         private void NextLevel()
         {

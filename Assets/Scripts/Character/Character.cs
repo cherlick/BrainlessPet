@@ -1,5 +1,4 @@
 using BrainlessPet.Scriptables;
-using System.Collections;
 using BrainlessPet.Tools;
 using UnityEngine;
 

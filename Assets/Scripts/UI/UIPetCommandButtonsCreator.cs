@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using BrainlessPet.Characters.Pets;
 using BrainlessPet.Scriptables;
@@ -20,6 +19,7 @@ namespace BrainlessPet.UI
             {
                 onLevelLoaded.OnLoadingRequested += SetLevelDataUI;
             }
+
             if (onLevelReady != null)
             {
                 onLevelReady.OnEventRaised += SetupLevelUI;
@@ -53,6 +53,7 @@ namespace BrainlessPet.UI
             newButton.SetupUIButton(data.commandType.icon, data.commandType.commandTriggerChannel,
                 data.commandType.commandSetupChannel, data.commandType.usageVariableReference
             );
+
             commandsCreated.Add(data.commandType.name, newButton);
         }
 
