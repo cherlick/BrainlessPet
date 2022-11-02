@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2761aae41d02ba142bc094bc90f507cc, type: 3}
+  m_Name: Level_5
+  m_EditorClassIdentifier: 
+  sceneAsset: {fileID: 102900000, guid: d01b3649d83c6ea46bfbb23736b87b2b, type: 3}
+  scenePath: Assets/Scenes/Levels/Level_5.unity
+  shortDescription: Tutorial Level - Use Stop
+  music: {fileID: 0}
+  levelData: {fileID: 11400000, guid: 70084530a5947384aac00b70ab31abc3, type: 2}

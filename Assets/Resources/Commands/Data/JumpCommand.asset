@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: JumpCommand
   m_EditorClassIdentifier: 
   commandSetupChannel: {fileID: 11400000, guid: 6202b73a14aebf643876ee546d748c6e, type: 2}
+  commandUsageChannel: {fileID: 11400000, guid: 6202b73a14aebf643876ee546d748c6e, type: 2}
   commandTriggerChannel: {fileID: 11400000, guid: ccfa7fda3835f954e8bba4c922035304, type: 2}
   icon: {fileID: -9095717837082945937, guid: c0e2e1ac3a6fd5149a1b370d07d2e53d, type: 3}
   modifier:

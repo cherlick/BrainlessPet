@@ -9,8 +9,14 @@ namespace BrainlessPet.Tools
         [SerializeField] private float maxDistance;
         [SerializeField] private float debugRayDuration;
         private Transform selection;
+        private float originalMaxDistance;
 
         public float SetDistance { set => maxDistance = value; }
+
+        private void Awake()
+        {
+            originalMaxDistance = maxDistance;
+        }
 
         public void CheckRay(Ray ray)
         {
@@ -42,6 +48,7 @@ namespace BrainlessPet.Tools
         {
             return selection;
         }
+        public void ResetDistance() => maxDistance = originalMaxDistance; 
 
 #if UNITY_EDITOR
         private void DebugMode(Vector3 startPoint, Vector3 direction)

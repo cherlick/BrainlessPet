@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3624731220251908700, guid: a2f42b3a172ef8a4eb38782e19501e2f, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3624731220251908700, guid: a2f42b3a172ef8a4eb38782e19501e2f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3624731220251908700, guid: a2f42b3a172ef8a4eb38782e19501e2f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.349496
+      value: 0.57
       objectReference: {fileID: 0}
     - target: {fileID: 3624731220251908700, guid: a2f42b3a172ef8a4eb38782e19501e2f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3624731220251908703, guid: a2f42b3a172ef8a4eb38782e19501e2f, type: 3}
       propertyPath: m_Name
-      value: gate_temp
+      value: PortalGate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2f42b3a172ef8a4eb38782e19501e2f, type: 3}
