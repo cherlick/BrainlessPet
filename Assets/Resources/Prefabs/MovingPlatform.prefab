@@ -184,12 +184,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886124703721103184}
+  - component: {fileID: 544131582000067114}
   - component: {fileID: 5886124703721103185}
   - component: {fileID: 5886124703721103187}
-  - component: {fileID: 544131582000067114}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,6 +210,33 @@ Transform:
   m_Father: {fileID: 3420509965840575983}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &544131582000067114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5886124703721103198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c9abc50951cc794c865d3a9965b6088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wayPoints:
+  - {fileID: 1925038419195372597}
+  - {fileID: 1010622898}
+  platformSpeed:
+    UseConstante: 1
+    ConstanteValue: 2
+    Variable: {fileID: 0}
+  stopDistance:
+    UseConstante: 1
+    ConstanteValue: 0
+    Variable: {fileID: 0}
+  waypointWatingTime:
+    UseConstante: 1
+    ConstanteValue: 0
+    Variable: {fileID: 0}
 --- !u!212 &5886124703721103185
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -288,29 +315,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5, y: 1}
   m_EdgeRadius: 0
---- !u!114 &544131582000067114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5886124703721103198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c9abc50951cc794c865d3a9965b6088, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wayPoints:
-  - {fileID: 1925038419195372597}
-  - {fileID: 1010622898}
-  platformSpeed:
-    UseConstante: 1
-    ConstanteValue: 2
-    Variable: {fileID: 0}
-  checkDistance:
-    UseConstante: 1
-    ConstanteValue: 2.5
-    Variable: {fileID: 0}
 --- !u!1 &6891007196642039824
 GameObject:
   m_ObjectHideFlags: 0

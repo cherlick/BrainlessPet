@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneAsset: {fileID: 102900000, guid: f2ce5d59195f27549918705b2ca72247, type: 3}
   scenePath: Assets/Scenes/Levels/Level_3.unity
-  shortDescription: Tutorial Level - SpeedUp with Jump
+  shortDescription: Tutorial Level - Speed Up with Jump
   music: {fileID: 0}
   levelData: {fileID: 11400000, guid: dcb24523fc505ad49b26abcf067a522e, type: 2}

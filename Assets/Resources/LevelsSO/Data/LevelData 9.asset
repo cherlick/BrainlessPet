@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c173086ffffb15498d11df166211f29, type: 3}
-  m_Name: Level_5_Data
+  m_Name: LevelData 9
   m_EditorClassIdentifier: 
-  nextLevel: {fileID: 11400000, guid: 1d966061e9c1b97479b18cf7e3c98c04, type: 2}
+  nextLevel: {fileID: 11400000, guid: 2dde2d019b3b5154886b0ecc88fbd93c, type: 2}
   petCommandsData:
-  - commandType: {fileID: 11400000, guid: 36344d4df5731ce40b5dd9f4926b4e3f, type: 2}
+  - commandType: {fileID: 11400000, guid: 5973c7aa0e8775e4fb605640ce5e72eb, type: 2}
     usageLimits:
-      UseConstante: 0
-      ConstanteValue: 0
-      Variable: {fileID: 11400000, guid: 7e6d0f596949bf44eba6f5bd556accc3, type: 2}
+      UseConstante: 1
+      ConstanteValue: 1
+      Variable: {fileID: 11400000, guid: 8ee4feb4ffd02104da639382910b1fb3, type: 2}

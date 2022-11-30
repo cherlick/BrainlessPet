@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2761aae41d02ba142bc094bc90f507cc, type: 3}
-  m_Name: Level_6
+  m_Name: Level_7
   m_EditorClassIdentifier: 
-  sceneAsset: {fileID: 102900000, guid: a0121bd0a7df9ce4381c365461878370, type: 3}
-  scenePath: Assets/Scenes/Levels/Level_6.unity
-  shortDescription: Tutorial Level - Use Items/Parachute
+  sceneAsset: {fileID: 102900000, guid: df574ab97a6790b44b41908e9cf2b15e, type: 3}
+  scenePath: Assets/Scenes/Levels/Level_7.unity
+  shortDescription: Tutorial Level - Turn without walls
   music: {fileID: 0}
-  levelData: {fileID: 11400000, guid: 5238dc18080218b46ac64e8d3edb9a2b, type: 2}
+  levelData: {fileID: 11400000, guid: 28270ff1c8a6b81459a9410348fc26d5, type: 2}

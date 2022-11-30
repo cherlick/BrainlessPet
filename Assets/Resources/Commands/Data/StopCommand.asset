@@ -17,7 +17,7 @@ MonoBehaviour:
   icon: {fileID: 7482667652216324306, guid: 66975f9353025364e983a73afb35d5cf, type: 3}
   modifier:
     UseConstante: 1
-    ConstanteValue: 1
+    ConstanteValue: -1
     Variable: {fileID: 0}
   duration:
     UseConstante: 1

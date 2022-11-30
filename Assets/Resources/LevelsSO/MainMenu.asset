@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c173086ffffb15498d11df166211f29, type: 3}
-  m_Name: Level_6_Data
+  m_Script: {fileID: 11500000, guid: 2761aae41d02ba142bc094bc90f507cc, type: 3}
+  m_Name: MainMenu
   m_EditorClassIdentifier: 
-  nextLevel: {fileID: 11400000, guid: 655adc20bd9de8e48b3a25410d797939, type: 2}
-  petCommandsData: []
+  sceneAsset: {fileID: 102900000, guid: 319eb9fa766b1734baf4853e49b46498, type: 3}
+  scenePath: Assets/Scenes/MainMenu.unity
+  shortDescription: 
+  music: {fileID: 0}
+  levelData: {fileID: 0}
