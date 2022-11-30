@@ -44,7 +44,7 @@ namespace BrainlessPet.LevelsSystem
             onDeathChannel!.OnEventRaised -= RestartLevel;
         }
 
-        private void SetupLevelData() =>currentLevel.levelData.SetupLevel();
+        private void SetupLevelData() => currentLevel.levelData.SetupLevel();
 
         private void NextLevel()
         {

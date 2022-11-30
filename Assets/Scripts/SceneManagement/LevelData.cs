@@ -15,7 +15,6 @@ namespace BrainlessPet.Scriptables
 
         public void SetupLevel() 
         {
-            Debug.Log($"Setup Level {this.name} with {petCommandsData.Count} number of commands");
             petCommandsData.ForEach(command => command.SetupCommand());
         }
     }

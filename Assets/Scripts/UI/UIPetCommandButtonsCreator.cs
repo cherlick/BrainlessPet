@@ -41,7 +41,7 @@ namespace BrainlessPet.UI
         }
         private void SetupLevelUI()
         {
-             if (currentLevel != null)
+            if (currentLevel != null)
             {
                 currentLevel.levelData.petCommandsData.ForEach(command => CreateCommandUI(command));
             }

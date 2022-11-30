@@ -6,8 +6,8 @@ namespace BrainlessPet.Characters.Pets
     {
         protected override void GiveCommand()
         {
-            if (limitUsage.Value <= 0) return;
-
+            if (limitUsage.Value <= 0 || !isLevelReady.Value) return;
+            
             base.GiveCommand();
             ChangeDirection();
         }

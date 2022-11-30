@@ -33,6 +33,7 @@ namespace BrainlessPet.Items
         }
         protected void DisableItem()
         {
+            Debug.Log("Disable");
             display.enabled = false;
             Destroy(gameObject, 0.1f);
         }

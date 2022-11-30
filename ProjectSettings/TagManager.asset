@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Walls
   - Gate
+  - Ground
+  - Item
+  - Pet
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
@@ -40,6 +44,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1593988819
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Midground
+    uniqueID: 2028223927
+    locked: 0
+  - name: Foreground
+    uniqueID: 2542235563
     locked: 0

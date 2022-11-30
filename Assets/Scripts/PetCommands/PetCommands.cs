@@ -10,6 +10,7 @@ namespace BrainlessPet.Characters.Pets
         [SerializeField] protected PetCommandType commandType;
         [SerializeField] protected FloatReference variableToModify;
         [SerializeField] protected FloatReference limitUsage;
+        [SerializeField] protected BoolReference isLevelReady;
         
         protected float originalValue;
 
@@ -38,15 +39,21 @@ namespace BrainlessPet.Characters.Pets
 
         protected virtual void GiveCommand()
         {
-            limitUsage.Variable.Value--;
-            commandType.commandSetupChannel.RaiseEvent(limitUsage.Value);
+            if (isLevelReady.Value)
+            {
+                limitUsage.Variable.Value--;
+                commandType.commandSetupChannel.RaiseEvent(limitUsage.Value);
+            }
         }
 
-        protected virtual IEnumerator ApplyModifier(float modifiedValue)
+        protected virtual IEnumerator ApplyModifier(float modifierValue)
         {
-            variableToModify.Variable.Value = modifiedValue;
+            if (variableToModify.Value != modifierValue + originalValue)
+            {
+                variableToModify.Variable.Value += modifierValue;
+            }
             yield return waitingTime;
-            variableToModify.Variable.Value = originalValue;
+            variableToModify.Variable.Value -= modifierValue;
         }
 
         public void UpdateUsage(float usage) => limitUsage.Variable.Value = usage;

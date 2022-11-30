@@ -10,8 +10,10 @@ namespace BrainlessPet.Characters
         [SerializeField] private VoidEventChannelSO onDeath;
         [SerializeField] private VoidEventChannelSO onEnterGate;
         [SerializeField] private float yLimitToDeath;
+        [SerializeField] private float fallSpeedToDeath = -15f;
         [SerializeField] private FloatReference yVelocity;
         [SerializeField] private FloatReference xDirection;
+        [SerializeField] private FloatReference movementSpeed;
         [SerializeField] private BoolReference isGrounded;
         [SerializeField] private float distanceToGroundCheck;
         private IRaySelector selector;
@@ -29,6 +31,7 @@ namespace BrainlessPet.Characters
 
         private void Update() 
         {
+            
             UpdateVariables();
             CheckLimitsDeath();
             CheckCollision();
@@ -78,24 +81,35 @@ namespace BrainlessPet.Characters
                 if (otherObject.CompareTag("Ground"))
                 {
                     isGrounded.Variable.Value = true;
-                    if (prevYVelocity < -15f)
-                    {
-                        onDeath.RaiseEvent();
-                    }
+                    CheckDeathByFall();
+                }
+
+                else if (otherObject.CompareTag("MovingPlatform"))
+                {
+                    isGrounded.Variable.Value = true;
+                    CheckDeathByFall();
+
+                    EnteringMovingPlatforms(otherObject);
                 }
                 else
                 {
                     isGrounded.Variable.Value = false;
+
                     if (yVelocity.Value != 0)
                     {
                         prevYVelocity = yVelocity.Value;
                     }
-                    
-                    
+
+                    ExitingMovingPlatforms();
                 }
             }
             else
             {
+                if (transform.parent != null)
+                {
+                    ExitingMovingPlatforms();
+                }
+                
                 isGrounded.Variable.Value = false;
                 if (yVelocity.Value != 0)
                 {
@@ -107,7 +121,32 @@ namespace BrainlessPet.Characters
         private void ChangeDirection()
         {
             xDirection.Variable.Value *=-1;
-            transform.localScale = new Vector3(direction.x, 1, 1);
+            transform.localScale = new Vector3(direction.x, transform.localScale.y, transform.localScale.z);
+        }
+
+        private void CheckDeathByFall()
+        {
+            if (prevYVelocity < fallSpeedToDeath)
+            {
+                onDeath.RaiseEvent();
+            }
+        }
+
+        private void EnteringMovingPlatforms(Transform platform)
+        {
+            
+            if (movementSpeed.Value == 0 )
+            {
+                if (transform.parent != platform)
+                {
+                    transform.SetParent(platform);
+                }
+            }
+        }
+
+        private void ExitingMovingPlatforms()
+        {
+            transform.SetParent(null);
         }
        
     }

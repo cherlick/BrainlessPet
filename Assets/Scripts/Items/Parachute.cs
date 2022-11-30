@@ -37,6 +37,7 @@ namespace BrainlessPet.Items
             while (!isCharacterGrounded.Value)
             {
                 yield return new WaitForSeconds(0.01f);
+                
                 if (yVelocity.Value < maxFallYVelocity)
                 {
                     yVelocity.Value += Time.deltaTime * fallVelocityDecreseTime;
@@ -46,8 +47,8 @@ namespace BrainlessPet.Items
                 {
                     isYVelocityChanged.Value = false;
                 }
-
             }
+            
             isYVelocityChanged.Value = false;
             yield return new WaitForSeconds(0.01f);
             DisableItem();

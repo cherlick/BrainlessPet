@@ -9,6 +9,7 @@ namespace BrainlessPet.Characters.Pets
 
         protected override void GiveCommand()
         {
+            if (!isLevelReady.Value) return;
             
             if (didJump)
             {

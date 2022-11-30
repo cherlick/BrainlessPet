@@ -8,10 +8,13 @@ namespace BrainlessPet.Core.UI
     {
         [Header("Event Channels")]
         [SerializeField] private VoidEventChannelSO OnPauseMenu;
+        [SerializeField] private FloatEventChannelSO OnCountUpdate;
+        [SerializeField] private LoadEventChannelSO OnLevelLoaded;
         [Header("UI Panels")]
         [SerializeField] private GameObject uiCommandsPanel;
-        [SerializeField] private TextMeshProUGUI uiCountDown;
+        [SerializeField] private UITextTitlePopUp titleMenu;
         [SerializeField] private GameObject menuPanel;
+        [SerializeField] private TextMeshProUGUI countLabel;
 
         private void Awake() 
         {
@@ -25,6 +28,12 @@ namespace BrainlessPet.Core.UI
             {
                 OnPauseMenu.OnEventRaised += OpenCloseMenuPanel;
             }
+            if (OnLevelLoaded != null)
+            {
+                OnLevelLoaded.OnLoadingRequested += ShowTitle;
+            }
+            OnCountUpdate.OnEventRaised += UpdateCountPanel;
+            
         }
 
         private void OnDisable() 
@@ -33,6 +42,11 @@ namespace BrainlessPet.Core.UI
             {
                 OnPauseMenu.OnEventRaised -= OpenCloseMenuPanel;
             }
+            if (OnLevelLoaded != null)
+            {
+                OnLevelLoaded.OnLoadingRequested -= ShowTitle;
+            }
+            OnCountUpdate.OnEventRaised -= UpdateCountPanel;
         }
         
         private void OpenCloseMenuPanel()
@@ -43,17 +57,33 @@ namespace BrainlessPet.Core.UI
             }
         }
 
-        public void SetCountDown(float countDown)
+        private void UpdateCountPanel(float updatedValue)
         {
-            if (uiCountDown == null) return;
+            if (updatedValue > 0 )
+            {
+                if (!countLabel.isActiveAndEnabled)
+                {
+                    countLabel.gameObject.SetActive(true);
+                }
+                
+                countLabel.text = updatedValue.ToString();
 
-            float minutes = Mathf.FloorToInt(countDown / 60);  
-            float seconds = Mathf.FloorToInt(countDown % 60);
-            uiCountDown.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            }
+            else
+            {
+                countLabel.gameObject.SetActive(false);
+            }
+        }
+
+        private void ShowTitle(GameSceneSO levelSO, bool isToShowLoading)
+        {
+            titleMenu.UpdateText(levelSO.name, levelSO.shortDescription);
+            titleMenu.ShowTitle();
         }
 
         private void DisablePanels()
         {
+            countLabel.gameObject.SetActive(false);
             if (uiCommandsPanel != null)
             {
                 uiCommandsPanel!.SetActive(false);
